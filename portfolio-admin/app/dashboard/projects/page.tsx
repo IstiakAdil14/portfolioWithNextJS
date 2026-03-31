@@ -39,13 +39,13 @@ export default function ProjectsPage() {
 
     const field = (key: keyof typeof form, label: string, type = 'text', rows?: number) => (
         <div>
-            <label className="text-sm text-gray-400 mb-1 block">{label}</label>
+            <label className="text-xs text-LightGray mb-1.5 block uppercase tracking-wider">{label}</label>
             {rows ? (
                 <textarea value={form[key]} onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))} rows={rows}
-                    className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-white outline-none focus:border-green-500 transition resize-none" />
+                    className="input-style resize-none" />
             ) : (
                 <input type={type} value={form[key]} onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))}
-                    className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-white outline-none focus:border-green-500 transition" />
+                    className="input-style" />
             )}
         </div>
     );
@@ -69,8 +69,8 @@ export default function ProjectsPage() {
                     {field('projectDetail', 'Description', 'text', 3)}
                     {field('technologiesUsed', 'Technologies (comma separated)')}
                     <div className="flex gap-3 pt-2">
-                        <button type="button" onClick={() => setOpen(false)} className="flex-1 border border-gray-700 text-gray-300 hover:text-white py-2.5 rounded-xl transition">Cancel</button>
-                        <button type="submit" disabled={saving} className="flex-1 bg-green-500 hover:bg-green-400 disabled:opacity-50 text-black font-semibold py-2.5 rounded-xl transition">
+                        <button type="button" onClick={() => setOpen(false)} className="flex-1 border border-SlateGray text-LightGray hover:text-Snow py-2.5 rounded-xl transition text-sm">Cancel</button>
+                        <button type="submit" disabled={saving} className="btn-green flex-1 py-2.5 text-sm">
                             {saving ? 'Saving...' : 'Save'}
                         </button>
                     </div>

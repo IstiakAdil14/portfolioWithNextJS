@@ -1,5 +1,5 @@
-import Intro from '../components/Common/Intro';
-import Nav from '../components/Common/Nav/Nav';
+import Intro from '../Common/Intro';
+import Nav from '../Common/Nav/Nav';
 import { FaBars, FaMousePointer } from 'react-icons/fa';
 import { SlOptionsVertical } from 'react-icons/sl';
 import { useState } from 'react';

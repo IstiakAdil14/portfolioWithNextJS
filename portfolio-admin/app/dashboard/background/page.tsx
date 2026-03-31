@@ -79,7 +79,7 @@ export default function BackgroundPage() {
                 </button>
             </div>
 
-            <Section title="Education" items={eduCards as Record<string, string>[]}
+            <Section title="Education" items={eduCards as unknown as Record<string, string>[]}
                 onAdd={() => setEduCards(c => [...c, { ...emptyEdu }])}
                 onRemove={i => setEduCards(c => c.filter((_, j) => j !== i))}
                 onChange={(i, k, v) => setEduCards(c => c.map((x, j) => j === i ? { ...x, [k]: v } : x))}
@@ -91,7 +91,7 @@ export default function BackgroundPage() {
                 ]}
             />
 
-            <Section title="Experience" items={expCards as Record<string, string>[]}
+            <Section title="Experience" items={expCards as unknown as Record<string, string>[]}
                 onAdd={() => setExpCards(c => [...c, { ...emptyExp }])}
                 onRemove={i => setExpCards(c => c.filter((_, j) => j !== i))}
                 onChange={(i, k, v) => setExpCards(c => c.map((x, j) => j === i ? { ...x, [k]: v } : x))}

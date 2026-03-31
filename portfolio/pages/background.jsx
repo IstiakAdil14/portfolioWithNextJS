@@ -53,4 +53,5 @@ function Background() {
     );
 }
 
+export const getServerSideProps = async () => ({ props: {} });
 export default Background;

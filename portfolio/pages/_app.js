@@ -1,12 +1,12 @@
 import '../styles/globals.css'
-
-import Layout from './layout'
+import { useState } from 'react'
+import Layout from '../components/Layout'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import CustomCursor from '../components/CustomCursor'
 
-const queryClient = new QueryClient()
-
 export default function App({ Component, pageProps }) {
+  const [queryClient] = useState(() => new QueryClient())
+
   return (
     <QueryClientProvider client={queryClient}>
       <CustomCursor />

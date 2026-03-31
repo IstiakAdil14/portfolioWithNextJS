@@ -36,4 +36,5 @@ const Portfolio = () => {
     );
 };
 
+export const getServerSideProps = async () => ({ props: {} });
 export default Portfolio;

@@ -166,4 +166,5 @@ const Contact = () => {
     );
 };
 
+export const getServerSideProps = async () => ({ props: {} });
 export default Contact;
