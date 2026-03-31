@@ -21,8 +21,8 @@ function Background() {
                 <div className="flex flex-col gap-y-4 order-2 md:order-1  md:mr-12">
                     <div className="mt-10 md:mt-0 text-xl text-Snow font-semibold">Education</div>
                     {isLoading ?
-                        [1, 2, 3].map(() => (
-                            <ParagraphSkeleton className={"p-8 h-full w-full relative"} />
+                        [1, 2, 3].map((i) => (
+                            <ParagraphSkeleton key={i} className={"p-8 h-full w-full relative"} />
                         ))
                         :
                         data && data[0]?.eduCards?.map((data, key) => (
@@ -36,8 +36,8 @@ function Background() {
                         <div className=" md:pt-0 pt-4 text-xl text-Snow font-semibold">Experience</div>
 
                         {isLoading ?
-                            [1, 2, 3].map(() => (
-                                <ParagraphSkeleton className={"p-8 h-full w-full relative"} />
+                            [1, 2, 3].map((i) => (
+                                <ParagraphSkeleton key={i} className={"p-8 h-full w-full relative"} />
                             ))
                             :
                             data && data[1]?.expCards?.map((data, key) => (
