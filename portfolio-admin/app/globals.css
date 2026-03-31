@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+    --color-Black: #000000;
+    --color-DeepNightBlack: #121212;
+    --color-MidNightBlack: #181818;
+    --color-EveningBlack: #1a1a1a;
+    --color-DarkGray: #282828;
+    --color-SlateGray: #404040;
+    --color-LightGray: #959595;
+    --color-SilverGray: #B3B3B3;
+    --color-Snow: #ffffff;
+    --color-Green: #1fdf64;
+
+    --font-circular: 'circular', sans-serif;
+
+    --shadow-green: 0px 0px 11px -3px rgba(31,223,100,0.8);
+    --shadow-green-sm: rgba(31,223,100,1) 0px 2px 5px -1px, rgba(31,223,100,1) 0px 1px 3px -1px;
+}
+
+@font-face {
+    font-family: 'circular';
+    src: url('/fonts/Circular-Light.otf');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'circular';
+    src: url('/fonts/Circular-Book.otf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'circular';
+    src: url('/fonts/Circular-Medium.otf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'circular';
+    src: url('/fonts/Circular-Bold.otf');
+    font-weight: 700;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'circular', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: rgba(31, 223, 100, 0.2);
+    color: #1fdf64;
+}
+
+/* Scrollbar — matches portfolio */
+::-webkit-scrollbar { width: 5px; height: 4px; }
+::-webkit-scrollbar-track { box-shadow: inset 0 0 5px grey; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: #1fdf64; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #1fdf64; }
+
+/* Reusable component classes */
+.card-bg {
+    background-color: rgba(26, 26, 26, 0.95);
+    border-radius: 0.75rem;
+    transition: background 0.2s;
+}
+.card-bg:hover {
+    background-image: linear-gradient(to bottom right, rgba(31,223,100,0.05), rgba(99,102,241,0.03));
+}
+
+.card-glow:hover {
+    box-shadow: rgba(31,223,100,1) 0px 2px 5px -1px, rgba(31,223,100,1) 0px 1px 3px -1px;
+}
+
+.input-style {
+    background-color: #121212;
+    color: #B3B3B3;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    outline: none;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    border: 1px solid #282828;
+    transition: border-color 0.2s, color 0.2s;
+    font-family: 'circular', sans-serif;
+}
+.input-style:focus {
+    border-color: #1fdf64;
+    box-shadow: 0 0 0 1px #1fdf64;
+    color: #fff;
+}
+.input-style::placeholder {
+    color: #404040;
+}
+
+.btn-green {
+    background-color: #1fdf64;
+    border-radius: 0.75rem;
+    color: #181818;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'circular', sans-serif;
+}
+.btn-green:hover { background-color: rgba(31,223,100,0.7); }
+.btn-green:disabled { opacity: 0.5; cursor: not-allowed; }
