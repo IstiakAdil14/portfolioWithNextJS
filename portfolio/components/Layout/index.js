@@ -39,7 +39,7 @@ export default function Layout({ children }) {
         {/* left most side */}
         <div
           className={`w-64 left-0 lg:rounded-xl lg:top-0 lg:left-0 lg:h-full overflow-hidden bg-DeepNightBlack shadow-2xl z-50 lg:flex flex-col lg:relative ${
-            intro ? `flex absolute top-[2rem] h-[calc(100vh-2rem)]` : 'hidden'
+            intro ? `flex absolute top-[1rem] h-[calc(100vh-1rem)]` : 'hidden'
           }`}>
           <Intro isOpen={intro} setIsOpen={setIntro} />
         </div>
