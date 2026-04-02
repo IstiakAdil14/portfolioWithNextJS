@@ -37,7 +37,7 @@ A modern, fully dynamic personal portfolio website built with **Next.js**, **Tai
 | UI Components | Ant Design |
 | Data Fetching | React Query + Axios |
 | Icons | React Icons |
-| Fonts | Circular (custom) |
+| Fonts | EPIC PRO |
 
 ---
 
