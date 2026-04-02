@@ -7,16 +7,22 @@ import { SiUpwork } from 'react-icons/si';
 import Fiverr_Icon from '../components/Fiverr_Icon';
 import Footer from '../components/Footer';
 import { Modal } from 'antd';
+import SkeletonBlock from '../components/Common/SkeletonBlock';
 
 const Contact = () => {
     const [profile, setProfile] = useState(null);
+    const [profileLoading, setProfileLoading] = useState(true);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`).then(r => r.json()).then(d => { if (d) setProfile(d); }).catch(() => {});
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`)
+            .then(r => r.json())
+            .then(d => { if (d) setProfile(d); })
+            .catch(() => {})
+            .finally(() => setProfileLoading(false));
     }, []);
 
     const handleInputChange = (e) => {
@@ -64,49 +70,75 @@ const Contact = () => {
                 <div className="my-6 text-Snow flex flex-col gap-y-5">
                     <h1 className='text-lg font-bold'>Contact Information</h1>
                     <div className="flex flex-col md:flex-row items-stretch gap-5 text-xs">
-                        {/* Location card */}
-                        <div className="card_stylings w-full md:w-1/2 p-5 md:p-6 lg:p-8 flex flex-col gap-y-4">
-                            <div className="flex justify-between items-center">
-                                <span className='md:text-base flex items-center gap-2'><HiLocationMarker className='text-Green' /> Country:</span>
-                                <span className='text-LightGray md:text-sm'>{profile?.residence ?? '...'}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className='md:text-base flex items-center gap-2'><HiLocationMarker className='text-Green' /> City:</span>
-                                <span className='text-LightGray md:text-sm'>{profile?.city ?? '...'}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className='md:text-base'>Age:</span>
-                                <span className='text-LightGray md:text-sm'>{profile?.age ?? '...'}</span>
-                            </div>
-                        </div>
+                        {profileLoading ? (
+                            <>
+                                <div className="card_stylings w-full md:w-1/2 p-5 md:p-6 lg:p-8 flex flex-col gap-y-4">
+                                    {[1, 2, 3].map(i => (
+                                        <div key={i} className="flex justify-between items-center">
+                                            <SkeletonBlock className="w-24 h-4" />
+                                            <SkeletonBlock className="w-28 h-4" />
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="card_stylings rounded-xl w-full md:w-1/2 p-5 md:p-6 lg:p-8 flex flex-col gap-y-4">
+                                    {[1, 2, 3].map(i => (
+                                        <div key={i} className="flex justify-between items-center">
+                                            <SkeletonBlock className="w-24 h-4" />
+                                            <SkeletonBlock className="w-32 h-4" />
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                {/* Location card */}
+                                <div className="card_stylings w-full md:w-1/2 p-5 md:p-6 lg:p-8 flex flex-col gap-y-4">
+                                    <div className="flex justify-between items-center">
+                                        <span className='md:text-base flex items-center gap-2'><HiLocationMarker className='text-Green' /> Country:</span>
+                                        <span className='text-LightGray md:text-sm'>{profile?.residence ?? '...'}</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                        <span className='md:text-base flex items-center gap-2'><HiLocationMarker className='text-Green' /> City:</span>
+                                        <span className='text-LightGray md:text-sm'>{profile?.city ?? '...'}</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                        <span className='md:text-base'>Age:</span>
+                                        <span className='text-LightGray md:text-sm'>{profile?.age ?? '...'}</span>
+                                    </div>
+                                </div>
 
-                        {/* Contact card */}
-                        <div className="card_stylings rounded-xl w-full md:w-1/2 p-5 md:p-6 lg:p-8 flex flex-col gap-y-4">
-                            <div className="flex justify-between items-center">
-                                <span className='md:text-base flex items-center gap-2'><HiMail className='text-Green' /> Email:</span>
-                                <span className='text-LightGray text-sm'>{profile?.email ?? '...'}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className='md:text-base flex items-center gap-2'><FaLinkedin className='text-Green' /> LinkedIn:</span>
-                                <a href={profile?.linkedin} target='_blank' rel='noreferrer' className='text-LightGray text-sm hover:text-Green transition'>
-                                    {profile?.linkedin ? 'istiakadil' : '...'}
-                                </a>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className='md:text-base flex items-center gap-2'><HiPhone className='text-Green' /> Phone:</span>
-                                <span className='text-LightGray text-sm'>{profile?.phone ?? '...'}</span>
-                            </div>
-                        </div>
+                                {/* Contact card */}
+                                <div className="card_stylings rounded-xl w-full md:w-1/2 p-5 md:p-6 lg:p-8 flex flex-col gap-y-4">
+                                    <div className="flex justify-between items-center">
+                                        <span className='md:text-base flex items-center gap-2'><HiMail className='text-Green' /> Email:</span>
+                                        <span className='text-LightGray text-sm'>{profile?.email ?? '...'}</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                        <span className='md:text-base flex items-center gap-2'><FaLinkedin className='text-Green' /> LinkedIn:</span>
+                                        <a href={profile?.linkedin} target='_blank' rel='noreferrer' className='text-LightGray text-sm hover:text-Green transition'>
+                                            {profile?.linkedin ? 'istiakadil' : '...'}
+                                        </a>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                        <span className='md:text-base flex items-center gap-2'><HiPhone className='text-Green' /> Phone:</span>
+                                        <span className='text-LightGray text-sm'>{profile?.phone ?? '...'}</span>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
 
                 {/* Social links */}
                 <div className="h-16 w-full card_stylings text-xl sm:text-3xl flex gap-x-8 sm:gap-x-16 items-center justify-center text-Snow">
-                    {socialLinks.filter(l => l.show).map(({ icon, href }, i) => (
-                        <a key={i} className='hover:scale-125 ease-in-out duration-700 hover:text-Green transition' href={href} target='_blank' rel='noreferrer'>
-                            {icon}
-                        </a>
-                    ))}
+                    {profileLoading
+                        ? [1, 2, 3, 4, 5].map(i => <SkeletonBlock key={i} className="w-8 h-8 rounded-full" />)
+                        : socialLinks.filter(l => l.show).map(({ icon, href }, i) => (
+                            <a key={i} className='hover:scale-125 ease-in-out duration-700 hover:text-Green transition' href={href} target='_blank' rel='noreferrer'>
+                                {icon}
+                            </a>
+                        ))
+                    }
                 </div>
 
                 {/* Contact form */}

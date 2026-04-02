@@ -1,12 +1,24 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import SkeletonBlock from '../Common/SkeletonBlock';
 
 const AvailabilityBadge = () => {
     const [available, setAvailable] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/meta?key=availability`).then(r => r.json()).then(d => { if (d !== null) setAvailable(d); }).catch(() => {});
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/meta?key=availability`)
+            .then(r => r.json())
+            .then(d => { if (d !== null) setAvailable(d); })
+            .catch(() => {})
+            .finally(() => setLoading(false));
     }, []);
+
+    if (loading) return (
+        <div className="px-2 md:px-8 py-4">
+            <SkeletonBlock className="w-52 h-10 rounded-full" />
+        </div>
+    );
 
     if (available === null) return null;
 

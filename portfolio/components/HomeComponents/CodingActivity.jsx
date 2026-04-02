@@ -1,17 +1,42 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import SkeletonBlock from '../Common/SkeletonBlock';
 
 const CodingActivity = () => {
     const [github, setGithub] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`).then(r => r.json()).then(profile => {
-            if (profile?.github) {
-                const username = profile.github.replace('https://github.com/', '').replace(/\/$/, '');
-                setGithub({ username, url: profile.github });
-            }
-        }).catch(() => {});
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`)
+            .then(r => r.json())
+            .then(profile => {
+                if (profile?.github) {
+                    const username = profile.github.replace('https://github.com/', '').replace(/\/$/, '');
+                    setGithub({ username, url: profile.github });
+                }
+            })
+            .catch(() => {})
+            .finally(() => setLoading(false));
     }, []);
+
+    if (loading) return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="px-2 md:px-8 py-6"
+        >
+            <SkeletonBlock className="w-40 h-6 mb-4" />
+            <div className="bg-EveningBlack rounded-xl p-4">
+                <SkeletonBlock className="w-full h-32" />
+                <div className="flex justify-between mt-3">
+                    <SkeletonBlock className="w-32 h-3" />
+                    <SkeletonBlock className="w-20 h-3" />
+                </div>
+            </div>
+        </motion.div>
+    );
 
     if (!github) return null;
 

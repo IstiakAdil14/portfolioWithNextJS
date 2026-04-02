@@ -1,4 +1,7 @@
 module.exports = {
+  experimental: {
+    scrollRestoration: false,
+  },
   env: {
     JWT_ACCESS_SECRET:
       "5f1ebeeebb9a38f330f36d8c66b92b52aceb7c2f0e55f3362a52958ec347c68a",

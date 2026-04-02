@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaCode, FaBook, FaMusic } from 'react-icons/fa';
+import SkeletonBlock from '../Common/SkeletonBlock';
 
 const icons = {
     building: <FaCode className="text-Green" />,
@@ -9,17 +10,22 @@ const icons = {
 };
 
 const CurrentlyDoing = () => {
-    const [data, setData] = useState({ building: '', learning: '', listening: '' });
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/meta?key=currently`).then(r => r.json()).then(d => { if (d) setData(d); }).catch(() => {});
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/meta?key=currently`)
+            .then(r => r.json())
+            .then(d => { if (d) setData(d); })
+            .catch(() => {})
+            .finally(() => setLoading(false));
     }, []);
 
-    const items = [
+    const items = data ? [
         { key: 'building', label: 'Building', value: data.building },
         { key: 'learning', label: 'Learning', value: data.learning },
         { key: 'listening', label: 'Listening', value: data.listening },
-    ];
+    ] : [];
 
     return (
         <motion.div
@@ -31,15 +37,20 @@ const CurrentlyDoing = () => {
         >
             <div className="text-lg font-bold text-Snow mb-4">Currently</div>
             <div className="flex flex-wrap gap-4">
-                {items.map(({ key, label, value }) => (
-                    <div key={key} className="flex items-center gap-3 bg-EveningBlack rounded-xl px-5 py-3 card_stylings">
-                        <span className="text-xl">{icons[key]}</span>
-                        <div>
-                            <p className="text-xs text-LightGray">{label}</p>
-                            <p className="text-sm text-Snow font-medium">{value || '...'}</p>
+                {loading
+                    ? [1, 2, 3].map(i => (
+                        <SkeletonBlock key={i} className="w-44 h-16" />
+                    ))
+                    : items.map(({ key, label, value }) => (
+                        <div key={key} className="flex items-center gap-3 bg-EveningBlack rounded-xl px-5 py-3 card_stylings">
+                            <span className="text-xl">{icons[key]}</span>
+                            <div>
+                                <p className="text-xs text-LightGray">{label}</p>
+                                <p className="text-sm text-Snow font-medium">{value || '...'}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
         </motion.div>
     );
