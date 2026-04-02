@@ -8,7 +8,7 @@ const FunStats = () => {
     const { ref, inView } = useInView({ triggerOnce: true });
 
     useEffect(() => {
-        fetch('/api/meta?key=funstats').then(r => r.json()).then(d => { if (d) setStats(d); }).catch(() => {});
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/meta?key=funstats`).then(r => r.json()).then(d => { if (d) setStats(d); }).catch(() => {});
     }, []);
 
     const items = [

@@ -4,7 +4,7 @@ const TechMarquee = () => {
     const [techStack, setTechStack] = useState([]);
 
     useEffect(() => {
-        fetch('/api/meta?key=techStack').then(r => r.json()).then(d => { if (Array.isArray(d)) setTechStack(d); }).catch(() => {});
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/meta?key=techStack`).then(r => r.json()).then(d => { if (Array.isArray(d)) setTechStack(d); }).catch(() => {});
     }, []);
 
     const doubled = [...techStack, ...techStack];

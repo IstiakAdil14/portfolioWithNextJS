@@ -12,7 +12,7 @@ const CurrentlyDoing = () => {
     const [data, setData] = useState({ building: '', learning: '', listening: '' });
 
     useEffect(() => {
-        fetch('/api/meta?key=currently').then(r => r.json()).then(d => { if (d) setData(d); }).catch(() => {});
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/meta?key=currently`).then(r => r.json()).then(d => { if (d) setData(d); }).catch(() => {});
     }, []);
 
     const items = [

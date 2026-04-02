@@ -8,7 +8,7 @@ const OpenSource = () => {
     const [githubUrl, setGithubUrl] = useState('');
 
     useEffect(() => {
-        fetch('/api/profile').then(r => r.json()).then(profile => {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`).then(r => r.json()).then(profile => {
             if (!profile?.github) { setLoading(false); return; }
             setGithubUrl(profile.github);
             const username = profile.github.replace('https://github.com/', '').replace(/\/$/, '');

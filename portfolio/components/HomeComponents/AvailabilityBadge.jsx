@@ -5,7 +5,7 @@ const AvailabilityBadge = () => {
     const [available, setAvailable] = useState(null);
 
     useEffect(() => {
-        fetch('/api/meta?key=availability').then(r => r.json()).then(d => { if (d !== null) setAvailable(d); }).catch(() => {});
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/meta?key=availability`).then(r => r.json()).then(d => { if (d !== null) setAvailable(d); }).catch(() => {});
     }, []);
 
     if (available === null) return null;
