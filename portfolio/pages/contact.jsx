@@ -16,7 +16,7 @@ const Contact = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        fetch('/api/profile').then(r => r.json()).then(d => { if (d) setProfile(d); }).catch(() => {});
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`).then(r => r.json()).then(d => { if (d) setProfile(d); }).catch(() => {});
     }, []);
 
     const handleInputChange = (e) => {
@@ -29,7 +29,7 @@ const Contact = () => {
         setIsLoading(true);
         setError('');
         try {
-            const res = await fetch('/api/send-email', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/send-email`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

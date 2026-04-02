@@ -5,7 +5,7 @@ const Download = ({ icon }) => {
     const [resumeUrl, setResumeUrl] = useState('/DocAdilNEW.pdf');
 
     useEffect(() => {
-        fetch('/api/profile').then(r => r.json()).then(d => {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`).then(r => r.json()).then(d => {
             if (d?.resumeUrl) setResumeUrl(d.resumeUrl);
         }).catch(() => {});
     }, []);

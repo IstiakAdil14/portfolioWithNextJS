@@ -5,7 +5,7 @@ const Skills = () => {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    fetch('/api/skills').then(r => r.json()).then(setSkills).catch(() => {});
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/skills`).then(r => r.json()).then(setSkills).catch(() => {});
   }, []);
 
   return (

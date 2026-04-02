@@ -12,7 +12,7 @@ const Location = () => {
   const [details, setDetails] = useState({ Residence: '', City: '', Age: '' });
 
   useEffect(() => {
-    fetch('/api/profile').then(r => r.json()).then(d => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`).then(r => r.json()).then(d => {
       if (d) setDetails({ Residence: d.residence, City: d.city, Age: calculateAge() });
     }).catch(() => {});
   }, []);

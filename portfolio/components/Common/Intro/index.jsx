@@ -14,7 +14,7 @@ const Intro = () => {
   const [profile, setProfile] = useState({ name: '', designation: '', github: '', linkedin: '' });
 
   useEffect(() => {
-    fetch('/api/profile').then(r => r.json()).then(d => { if (d) setProfile(d); }).catch(() => {});
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`).then(r => r.json()).then(d => { if (d) setProfile(d); }).catch(() => {});
   }, []);
 
   return (

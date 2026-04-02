@@ -5,7 +5,7 @@ const Contact = () => {
   const [contacts, setContacts] = useState({ email: '', phone: '' });
 
   useEffect(() => {
-    fetch('/api/profile').then(r => r.json()).then(d => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`).then(r => r.json()).then(d => {
       if (d) setContacts({ email: d.email, phone: d.phone });
     }).catch(() => {});
   }, []);
