@@ -11,8 +11,12 @@ const CustomCursor = () => {
 
     const [isHovering, setIsHovering] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [isTouch, setIsTouch] = useState(false);
 
     useEffect(() => {
+        const touch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        setIsTouch(touch);
+        if (touch) return;
         const onMove = (e) => {
             mouse.current = { x: e.clientX, y: e.clientY };
 
@@ -67,6 +71,8 @@ const CustomCursor = () => {
             cancelAnimationFrame(rafRef.current);
         };
     }, []);
+
+    if (isTouch) return null;
 
     return (
         <>
