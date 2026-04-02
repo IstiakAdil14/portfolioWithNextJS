@@ -27,7 +27,7 @@ const Intro = () => {
         </div>
       </div>
 
-      <div className='beech z-20 flex flex-col overflow-y-scroll pt-48 top-48 space-y-6 divide-y divide-white overflow-x-hidden no-scrollbar px-4'>
+      <div className='beech z-20 flex flex-col overflow-y-scroll pt-48 top-48 space-y-6 divide-y divide-white overflow-x-hidden no-scrollbar px-4 pb-12'>
         <Location />
         <Languages />
         <Skills />
