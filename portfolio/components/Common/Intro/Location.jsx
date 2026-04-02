@@ -1,11 +1,19 @@
 import { useEffect, useState } from 'react';
 
+function calculateAge() {
+  const dob = new Date(2001, 11, 13);
+  const today = new Date();
+  let age = today.getFullYear() - dob.getFullYear();
+  if (today < new Date(today.getFullYear(), 11, 13)) age--;
+  return age;
+}
+
 const Location = () => {
   const [details, setDetails] = useState({ Residence: '', City: '', Age: '' });
 
   useEffect(() => {
     fetch('/api/profile').then(r => r.json()).then(d => {
-      if (d) setDetails({ Residence: d.residence, City: d.city, Age: d.age });
+      if (d) setDetails({ Residence: d.residence, City: d.city, Age: calculateAge() });
     }).catch(() => {});
   }, []);
 
