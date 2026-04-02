@@ -47,7 +47,7 @@ export default function Layout({ children }) {
         {intro && <div onClick={(e) => setIntro(false)} className='fixed top-0 left-0  w-full h-full bg-black/50 backdrop-blur-[2px] z-40'></div>}
 
         {/* middle of screen */}
-        <div ref={contentRef} className='w-full h-full lg:w-9/12 shadow-2xl bg-DeepNightBlack relative overflow-auto overflow-x-hidden no-scrollbar'>{children}</div>
+        <div ref={contentRef} className='w-full lg:w-9/12 shadow-2xl bg-DeepNightBlack relative overflow-auto overflow-x-hidden no-scrollbar'>{children}</div>
 
         {/* right side */}
         {/* right side */}
