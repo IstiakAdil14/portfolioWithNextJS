@@ -18,7 +18,7 @@ export default function Layout({ children }) {
   return (
     <div className={`h-screen lg:p-[0.8rem] flex flex-col select-none font-circular`}>
       <div className='lg:hidden'>
-        <div className=' bg-DeepNightBlack text-LightGray w-full h-10 flex items-center justify-between px-2 lg:hidden relative'>
+        <div className=' bg-DeepNightBlack text-LightGray w-full h-10 flex items-center justify-between px-2 lg:hidden relative mt-4'>
           <div className='icon flex items-center gap-x-2' onClick={(e) => setIntro(!intro)}>
             <span className='icon border-2 text-Green border-Green p-1 text-sm rounded-lg'>
               <SlOptionsVertical />
