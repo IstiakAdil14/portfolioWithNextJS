@@ -2,11 +2,18 @@ import Intro from '../Common/Intro';
 import Nav from '../Common/Nav/Nav';
 import { FaBars, FaMousePointer } from 'react-icons/fa';
 import { SlOptionsVertical } from 'react-icons/sl';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Layout({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [intro, setIntro] = useState(false);
+  const contentRef = useRef(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (contentRef.current) contentRef.current.scrollTop = 0;
+  }, [router.asPath]);
 
   return (
     <div className={`h-screen lg:p-[0.8rem] flex flex-col select-none font-circular`}>
@@ -40,7 +47,7 @@ export default function Layout({ children }) {
         {intro && <div onClick={(e) => setIntro(false)} className='fixed top-0 left-0  w-full h-full bg-black/50 backdrop-blur-[2px] z-40'></div>}
 
         {/* middle of screen */}
-        <div className='w-full h-auto lg:w-9/12 shadow-2xl bg-DeepNightBlack relative overflow-auto overflow-x-hidden no-scrollbar'>{children}</div>
+        <div ref={contentRef} className='w-full h-auto lg:w-9/12 shadow-2xl bg-DeepNightBlack relative overflow-auto overflow-x-hidden no-scrollbar'>{children}</div>
 
         {/* right side */}
         {/* right side */}
