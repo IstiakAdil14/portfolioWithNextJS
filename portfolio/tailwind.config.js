@@ -28,13 +28,13 @@ module.exports = {
         Snow: "#ffffff",
       },
       fontFamily: {
-        'cascadia-normal': ['cascadia-normal'],
-        'circular': ['circular-normal', 'sans-serif'],
-        'circular-light': ['circular-light', 'sans-serif'],
-        'circular-normal': ['circular-normal', 'sans-serif'],
-        'circular-medium': ['circular-medium', 'sans-serif'],
-        'circular-bold': ['circular-bold', 'sans-serif'],
-
+        'epic-pro': ['epic-pro', 'sans-serif'],
+        'cascadia-normal': ['epic-pro', 'sans-serif'],
+        'circular': ['epic-pro', 'sans-serif'],
+        'circular-light': ['epic-pro', 'sans-serif'],
+        'circular-normal': ['epic-pro', 'sans-serif'],
+        'circular-medium': ['epic-pro', 'sans-serif'],
+        'circular-bold': ['epic-pro', 'sans-serif'],
       }
     },
   },

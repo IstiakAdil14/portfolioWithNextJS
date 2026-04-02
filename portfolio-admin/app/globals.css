@@ -12,43 +12,30 @@
     --color-Snow: #ffffff;
     --color-Green: #1fdf64;
 
-    --font-circular: 'circular', sans-serif;
+    --font-circular: 'epic-pro', sans-serif;
 
     --shadow-green: 0px 0px 11px -3px rgba(31,223,100,0.8);
     --shadow-green-sm: rgba(31,223,100,1) 0px 2px 5px -1px, rgba(31,223,100,1) 0px 1px 3px -1px;
 }
 
 @font-face {
-    font-family: 'circular';
-    src: url('/fonts/Circular-Light.otf');
-    font-weight: 300;
-}
-@font-face {
-    font-family: 'circular';
-    src: url('/fonts/Circular-Book.otf');
-    font-weight: 400;
-}
-@font-face {
-    font-family: 'circular';
-    src: url('/fonts/Circular-Medium.otf');
-    font-weight: 500;
-}
-@font-face {
-    font-family: 'circular';
-    src: url('/fonts/Circular-Bold.otf');
-    font-weight: 700;
+    font-family: 'epic-pro';
+    src: url('/fonts/GC-EPICPRO-Demo-BF6891cc5419ab8.ttf') format('truetype');
+    font-weight: 100 900;
+    font-display: swap;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    cursor: none !important;
 }
 
 body {
     background-color: #000;
     color: #fff;
-    font-family: 'circular', sans-serif;
+    font-family: 'epic-pro', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -87,7 +74,7 @@ body {
     padding: 0.625rem 1rem;
     border: 1px solid #282828;
     transition: border-color 0.2s, color 0.2s;
-    font-family: 'circular', sans-serif;
+    font-family: 'epic-pro', sans-serif;
 }
 .input-style:focus {
     border-color: #1fdf64;
@@ -104,11 +91,11 @@ body {
     color: #181818;
     font-weight: 500;
     transition: background-color 0.2s;
-    cursor: pointer;
+    cursor: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: 'circular', sans-serif;
+    font-family: 'epic-pro', sans-serif;
 }
 .btn-green:hover { background-color: rgba(31,223,100,0.7); }
-.btn-green:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-green:disabled { opacity: 0.5; cursor: none; }

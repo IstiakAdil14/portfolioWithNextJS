@@ -29,24 +29,10 @@ body {
     }
 
     @font-face {
-      font-family: 'cascadia-normal';
-      src: url(/fonts/Cascadia.ttf);
-    }
-    @font-face {
-      font-family: 'circular-light';
-      src: url(/fonts/Circular-Light.otf);
-    }
-    @font-face {
-      font-family: 'circular-normal';
-      src: url(/fonts/Circular-Book.otf);
-    }
-    @font-face {
-      font-family: 'circular-medium';
-      src: url(/fonts/Circular-Medium.otf);
-    }
-    @font-face {
-      font-family: 'circular-bold';
-      src: url(/fonts/Circular-Bold.otf);
+      font-family: 'epic-pro';
+      src: url('/fonts/GC-EPICPRO-Demo-BF6891cc5419ab8.ttf') format('truetype');
+      font-weight: 100 900;
+      font-display: swap;
     }
   }
     @variants responsive {
