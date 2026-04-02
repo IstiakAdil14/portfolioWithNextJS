@@ -37,16 +37,12 @@ const Intro = () => {
       </div>
 
       <div className='footer absolute flex justify-center space-x-6 text-xl items-center bottom-0 z-50 h-10 w-full bg-MidNightBlack text-Snow'>
-        {profile.github && (
-          <Link href={profile.github} target='_blank' rel='noreferrer'>
-            <FaGithub />
-          </Link>
-        )}
-        {profile.linkedin && (
-          <Link href={profile.linkedin} target='_blank' rel='noreferrer'>
-            <FaLinkedin />
-          </Link>
-        )}
+        <Link href={profile.github || 'https://github.com/IstiakAdil14'} target='_blank' rel='noreferrer'>
+          <FaGithub />
+        </Link>
+        <Link href={profile.linkedin || 'https://www.linkedin.com/in/istiak-adil-755361329/'} target='_blank' rel='noreferrer'>
+          <FaLinkedin />
+        </Link>
       </div>
     </>
   );
