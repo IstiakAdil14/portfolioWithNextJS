@@ -16,7 +16,7 @@ export default function Layout({ children }) {
   }, [router.asPath]);
 
   return (
-    <div className={`h-screen lg:p-[0.8rem] flex flex-col select-none font-circular`}>
+    <div className={`h-screen lg:p-[0.8rem] flex flex-col select-none font-circular overflow-hidden`}>
       <div className='lg:hidden'>
         <div className=' bg-DeepNightBlack text-LightGray w-full h-10 flex items-center justify-between px-2 lg:hidden relative mt-4'>
           <div className='icon flex items-center gap-x-2' onClick={(e) => setIntro(!intro)}>
@@ -47,7 +47,7 @@ export default function Layout({ children }) {
         {intro && <div onClick={(e) => setIntro(false)} className='fixed top-0 left-0  w-full h-full bg-black/50 backdrop-blur-[2px] z-40'></div>}
 
         {/* middle of screen */}
-        <div ref={contentRef} className='w-full h-auto lg:w-9/12 shadow-2xl bg-DeepNightBlack relative overflow-auto overflow-x-hidden no-scrollbar'>{children}</div>
+        <div ref={contentRef} className='w-full h-full lg:w-9/12 shadow-2xl bg-DeepNightBlack relative overflow-auto overflow-x-hidden no-scrollbar'>{children}</div>
 
         {/* right side */}
         {/* right side */}

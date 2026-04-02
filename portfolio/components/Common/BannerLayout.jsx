@@ -2,7 +2,7 @@
 const BannerLayout = ({ children }) => {
     return (
         <div
-            className="relative backdrop-blur-sm w-full h-80 bg-fixed z-10"
+            className="relative backdrop-blur-sm w-full h-auto min-h-[420px] sm:h-80 bg-fixed z-10"
             style={{
                 background: 'url(images/background.png)',
                 backgroundRepeat: 'no-repeat',
